@@ -1,0 +1,12 @@
+fastapi==0.88.0
+uvicorn[standard]
+sqlalchemy
+pydantic
+psycopg2-binary
+python-multipart
+kafka-python
+alembic
+python-jose[cryptography]
+bcrypt
+email-validator
+jinja2

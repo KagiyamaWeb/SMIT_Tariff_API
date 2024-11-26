@@ -15,14 +15,15 @@ app = FastAPI()
 
 producer = KafkaProducer(
     bootstrap_servers=['kafka:9092'],
-    value_serializer=lambda v: json.dumps(v).encode('utf-8')
+    value_serializer=lambda v: json.dumps(v).encode('utf-8'),
+    api_version=(0, 10)
 )
 
 def log_change(user_id: Optional[int], action: str):
     message = {
         "user_id": user_id,
         "action": action,
-        "timestamp": datetime.utcnow().isoformat()
+        "timestamp": datetime.now().isoformat()
     }
     producer.send('rate_changes', message)
 
